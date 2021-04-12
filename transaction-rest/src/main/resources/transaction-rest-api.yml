@@ -1,0 +1,201 @@
+swagger: '2.0'
+host: localhost
+info:
+  description: 
+    Transactions query API
+  version: "0.0.1"
+  title: Transaction queries
+tags:
+- name: Transaction queries
+  description: Everything having to do with transaction queries
+schemes:
+ - https
+security:
+  - OAuth2: [] 
+securityDefinitions:
+      OAuth2:
+        type: oauth2
+        flow: accessCode
+        authorizationUrl: https://example.com/oauth/authorize
+        tokenUrl: https://example.com/oauth/token
+        scopes:
+          application: full access
+paths:
+  '/merchants/{merchant_id}/transactions':
+    parameters:
+      - name: merchant_id
+        in: path
+        description: Merchant identifier
+        required: true
+        type: string
+    get:      
+      tags:
+      - transactions
+      summary: Retrieves all of the merchant's transactions
+      operationId: getAllTransactions
+      security:
+      - OAuth2: [application]
+      produces:
+      - application/json
+      responses:
+        200:
+          description: All items retrieved with no issue
+          schema:
+            $ref: '#/definitions/TransactionsResponse'
+        500:
+          description: Unexpected error
+          schema: 
+            $ref: "#/definitions/ErrorResponse"
+  '/merchants/{merchant_id}/transactions/{status}/{minAmount}':
+    parameters:
+      - name: merchant_id
+        in: path
+        description: Merchant identifier
+        required: true
+        type: string
+      - name: status
+        description: Payment status of the transactions to retrieve
+        in: path
+        required: true
+        type: string        
+        enum:
+          - 'Success'
+          - 'Failure'
+          - 'Pending'
+      - name: minAmount
+        in: path
+        required: true
+        type: number
+        format: double
+        description: Minimum amount to search from.
+        minimum: 0
+        maximum: 9.9999999999E8
+    get:
+      tags:
+        - transactions
+      summary: Retrieves all of the merchant's transactions, filtered by a status and a minimum amount. 
+      operationId: getAllTransactions
+      security:
+      - OAuth2: [application]
+      produces:
+      - application/json
+      responses:
+        200:
+          description: All items retrieved with no issue
+          schema:
+            $ref: '#/definitions/TransactionsResponse'
+        500:
+          description: Unexpected error
+          schema: 
+            $ref: "#/definitions/ErrorResponse"
+
+
+
+definitions:
+  TransactionAPIModel:
+    type: object
+    properties: 
+      id:
+        type : string
+        description: The transaction identifier. 
+        example: 0ad422e9-7791-11fb-8177-97461e390074
+        pattern: "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+        minLength: 32
+        maxLength: 32
+      currency:
+        type: string
+        example: KRW
+        description: Currency code used for the payment.
+        pattern: "[A-Z]{3}"
+        minLength: 3
+        maxLength: 3
+      amount:        
+        type: number
+        format: double
+        description: Amount paid.
+        minimum: 0
+        maximum: 9.9999999999E8
+      billing_descriptor:
+        type: string
+        description: Description of the bill. 
+        maxLength: 500
+      country_code:
+        type: string
+        description: country of origin of the payment
+        example: ES 
+      creation_datetime:
+        type: string
+        example: 2021-02-12 17:24:50.839637
+        description: A string representation of the transaction creation date
+      creation_timestamp:        
+        type: integer
+        format: int64
+        example: 1558359555202
+        description: Transaction creation date as a timestamp integer
+        minimum: -2211753600
+        maximum: 253402300799
+      merchant_transaction_id:
+        type: string
+        example: 1d2de348-2889-4ea3-a935-ce2b131b9039
+        description: The transaction id assigned by the merchant internal systems
+      payment_operation_status:
+        $ref: "#/definitions/PaymentOperationStatus"
+      payment_type:
+        $ref: "#/definitions/PaymentType"
+      update_datetime:
+        type: string
+        example: 2021-02-12 17:24:50.839637
+        description: A string representation of the transaction last update date
+      update_timestamp:
+        type: integer
+        format: int64
+        example: 1558359555202
+        description: Transaction last update date as a timestamp integer
+        minimum: -2211753600
+        maximum: 253402300799
+      payment_method_name:
+        type: string
+        example: method1
+        description: Payment method executed for the transaction
+      referenced_payment_operation_id:
+        type: string
+        example: 0ad422e9-7791-11fb-8177-97461e390074
+        description: identifier for an associated transaction
+        pattern: "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+        minLength: 32
+        maxLength: 32
+  TransactionsResponse:
+    description: Response for a query that returns multiple transactions
+    type: array
+    items: 
+      $ref: "#/definitions/TransactionAPIModel"
+  PaymentOperationStatus:
+    type: string
+    example: Success
+    description: current status of the payment operation
+    enum:
+      - 'Success'
+      - 'Failure'
+      - 'Pending'
+  PaymentType:
+    type: string
+    example: Debit
+    description: Type of payment used in the transaction
+    enum: 
+      - 'Debit'
+      - 'Refund'
+      - 'Credit'
+  ErrorResponse:
+    type: object
+    description: Information about an error. 
+    properties:
+      message:
+        type: string
+        description: Descriptive message of the error. 
+        maxLength: 250
+        pattern: "[^A-Za-z0-9]"
+      code:
+        type: string
+        description: Code for the error. 
+        maxLength: 250
+        pattern: "[^A-Za-z0-9]"

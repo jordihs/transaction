@@ -1,0 +1,62 @@
+[
+  {
+    "id": "0ad4228a-7787-1fab-8177-8778e2140008",
+    "currency": "KRW",
+    "amount": 110.00,
+    "billing_descriptor": null,
+    "country_code": "KR",
+    "creation_datetime": "2021-02-09 15:46:22.237270",
+    "merchant_transaction_id": "test_sandbox_000000001",
+    "payment_operation_status": "Pending",
+    "payment_type": "Debit",
+    "update_datetime": "2021-02-09 15:46:22.237270",
+    "merchant_id": "1",
+    "payment_method_name": "method4",
+    "referenced_payment_operation_id": null
+  },
+  {
+    "id": "0ad4239f-7787-1e49-8177-8bbcbbf70006",
+    "currency": "SGD",
+    "amount": 110.00,
+    "billing_descriptor": "Billing descriptor",
+    "country_code": "KR",
+    "creation_datetime": "2021-02-10 11:38:57.871955",
+    "merchant_transaction_id": "697cd6a5-5a7b-490a-902d-559689241407",
+    "payment_operation_status": "Failure",
+    "payment_type": "Debit",
+    "update_datetime": "2021-02-10 11:38:57.87195",
+    "merchant_id": "1",
+    "payment_method_name": "method4",
+    "referenced_payment_operation_id": null
+  },
+  {
+    "id": "0ad4228a-7787-1fab-8177-8bdc474f000d",
+    "currency": "KRW",
+    "amount": 100.00,
+    "billing_descriptor": "Billing descriptor",
+    "country_code": "KR",
+    "creation_datetime": "2021-02-10 12:13:25.144515",
+    "merchant_transaction_id": "f69d6b59-c0be-4c43-8c34-7bd0a636f100",
+    "payment_operation_status": "Pending",
+    "payment_type": "Debit",
+    "update_datetime": "2021-02-10 12:13:25.144515",
+    "merchant_id": "2",
+    "payment_method_name": "method4",
+    "referenced_payment_operation_id": null
+  },
+  {
+    "id": "0ad4228a-7787-1fab-8177-8c50ed030011",
+    "currency": "KRW",
+    "amount": 100.00,
+    "billing_descriptor": "Billing descriptor",
+    "country_code": "KR",
+    "creation_datetime": "2021-02-10 14:20:49.749740",
+    "merchant_transaction_id": "f531cd4d-6e7c-4a11-9628-322223e904fa",
+    "payment_operation_status": "Pending",
+    "payment_type": "Debit",
+    "update_datetime": "2021-02-10 14:20:49.749740",
+    "merchant_id": "1",
+    "payment_method_name": "method4",
+    "referenced_payment_operation_id": "0ad4228a-7787-1fab-8177-8778e2140008"
+  }
+]

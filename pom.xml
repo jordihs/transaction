@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.docomo.transaction</groupId>
+	<artifactId>transaction</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>transaction application</name>
+	<packaging>pom</packaging>
+
+
+    <modules>
+        <module>transaction-core</module>
+        <module>transaction_json_jpa</module>
+        <module>transaction-rest</module>
+        <module>transaction-application</module>
+    </modules>
+</project>
