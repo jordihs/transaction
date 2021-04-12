@@ -31,3 +31,12 @@ Once the build is finished, a docker image will be created in repository transac
 
 docker run -p 8080:8080 --name TransactionService transaction-application:0.0.1-SNAPSHOT
 
+Finally, you can test the API using the following URLs:
+
+http://localhost:8080/merchants/1/transactions
+
+(change the number for a different merchant ID)
+
+http://localhost:8080/merchants/1/transactions/Success/200
+
+(change the number for a different amount, and the status for different statuses). 
