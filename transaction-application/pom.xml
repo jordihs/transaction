@@ -77,19 +77,6 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-
-					<outputDirectory>${basedir}/target</outputDirectory>
-					<resources>
-						<resource>
-							<directory>docker</directory>
-							<filtering>true</filtering>
-							<includes>
-								<include>Dockerfile</include>
-							</includes>
-						</resource>
-					</resources>
-				</configuration>
 				<executions>
 					<execution>
 						<id>copy-resources</id>
