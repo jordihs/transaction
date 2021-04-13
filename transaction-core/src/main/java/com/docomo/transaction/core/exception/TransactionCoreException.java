@@ -2,6 +2,9 @@ package com.docomo.transaction.core.exception;
 
 import com.docomo.transaction.core.domain.AppError;
 
+/**
+ * Exceptions thrown in the core application logic execution.
+ */
 public class TransactionCoreException extends Exception {
 
     private final AppError error;

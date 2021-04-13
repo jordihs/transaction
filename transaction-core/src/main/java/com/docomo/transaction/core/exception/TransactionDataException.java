@@ -2,6 +2,9 @@ package com.docomo.transaction.core.exception;
 
 import java.security.PrivilegedActionException;
 
+/**
+ * Exceptions thrown by data access components.
+ */
 public class TransactionDataException extends Exception {
     /**
      * Constructs a new exception with {@code null} as its detail message.

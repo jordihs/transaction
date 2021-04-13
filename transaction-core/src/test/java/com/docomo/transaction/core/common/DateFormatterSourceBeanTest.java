@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DateFormatterSourceBeanTest {
 
     @Test
-    void testDateFormatterSourceBean(){
+    void testStandardFormatter(){
         DateFormattersSourceBean sourceBean = new DateFormattersSourceBean();
-        DateTimeFormatter formatter = sourceBean.getFormatter();
+        DateTimeFormatter formatter = sourceBean.getStandardFormatter();
 
         String expectedDate = "2021-03-08 13:22:47.843088";
         LocalDateTime time = LocalDateTime.of(2021,

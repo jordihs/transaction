@@ -9,6 +9,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 
+/**
+ * This shared component may be used to obtain date formatting objects for different uses
+ * throughout all adapters, so that formatting is reused effectively and there are no
+ * collisions if there is a date formatting policy change.
+ * All formats must be tagged with a qualifier so that clients may specify which type
+ * of format is required.
+ */
 @Component
 public class DateFormattersSourceBean {
 
@@ -20,7 +27,7 @@ public class DateFormattersSourceBean {
 
     @Bean
     @Qualifier("standard")
-    public DateTimeFormatter getFormatter(){
+    public DateTimeFormatter getStandardFormatter(){
         return formatter;
     }
 

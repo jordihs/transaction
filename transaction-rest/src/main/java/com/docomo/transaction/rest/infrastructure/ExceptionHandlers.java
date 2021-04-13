@@ -1,6 +1,5 @@
 package com.docomo.transaction.rest.infrastructure;
 
-import com.docomo.transaction.core.exception.TransactionCoreException;
 import com.docomo.transaction.generated.model.ErrorResponse;
 import com.docomo.transaction.rest.model.exception.TransactionCoreExceptionWrapper;
 import org.springframework.http.HttpStatus;
